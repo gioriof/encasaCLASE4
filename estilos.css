@@ -1,12 +1,115 @@
-*{
-    margin: 0 auto;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    background-color: bisque;
-    
+body {
+    font-family: sans-serif;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-p{
-    color: aqua;
+.formulario-contenedor {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.formulario-contenedor h1 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.formulario-contenedor > p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 32px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+input, textarea, select {
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border 0.2s;
+    font-family: sans-serif;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #3b82f6;
+}
+
+input.valido {
+    border-color: #22c55e;
+}
+
+input.invalido {
+    border-color: #ef4444;
+}
+
+.mensaje-error {
+    font-size: 0.8rem;
+    color: #ef4444;
+    display: none;
+}
+
+.mensaje-error.visible {
+    display: block;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-enviar {
+    width: 100%;
+    padding: 12px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-enviar:hover:not(:disabled) {
+    background-color: #2563eb;
+}
+
+.btn-enviar:disabled {
+    background-color: #93c5fd;
+    cursor: not-allowed;
+}
+
+.exito {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    color: #22c55e;
+    font-weight: 600;
+    font-size: 1rem;
 }

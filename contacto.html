@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas sobre Git</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <div class="formulario-contenedor">
+        <h1>Consultas sobre Git</h1>
+        <p>Completá el formulario y te respondemos a la brevedad.</p>
+
+        <form id="formulario">
+
+            <div class="campo">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" placeholder="Tu nombre" required>
+            </div>
+
+            <div class="campo">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="tucorreo@ejemplo.com">
+                <span class="mensaje-error" id="error-email">El email no tiene un formato válido.</span>
+            </div>
+
+            <div class="campo">
+                <label for="tema">Tema</label>
+                <select id="tema">
+                    <option value="">Seleccioná un tema</option>
+                    <option value="ramas">Ramas (branches)</option>
+                    <option value="commits">Commits</option>
+                    <option value="merge">Merge y conflictos</option>
+                    <option value="rebase">Rebase</option>
+                    <option value="pull-push">Pull / Push</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="consulta">Consulta</label>
+                <textarea id="consulta" placeholder="Describí tu duda con Git..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-enviar" id="boton-enviar" disabled>Enviar consulta</button>
+
+            <p class="exito" id="mensaje-exito">✓ ¡Consulta enviada con éxito!</p>
+
+        </form>
+    </div>
+
+    <script>
+        const campoEmail = document.getElementById('email');
+        const errorEmail = document.getElementById('error-email');
+        const botonEnviar = document.getElementById('boton-enviar');
+        const formulario = document.getElementById('formulario');
+        const mensajeExito = document.getElementById('mensaje-exito');
+
+        function validarEmail(valor) {
+            const formato = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return formato.test(valor);
+        }
+
+        campoEmail.addEventListener('input', function () {
+            const valor = campoEmail.value;
+
+            if (valor === '') {
+                campoEmail.classList.remove('valido', 'invalido');
+                errorEmail.classList.remove('visible');
+                botonEnviar.disabled = true;
+                return;
+            }
+
+            if (validarEmail(valor)) {
+                campoEmail.classList.add('valido');
+                campoEmail.classList.remove('invalido');
+                errorEmail.classList.remove('visible');
+                botonEnviar.disabled = false;
+            } else {
+                campoEmail.classList.add('invalido');
+                campoEmail.classList.remove('valido');
+                errorEmail.classList.add('visible');
+                botonEnviar.disabled = true;
+            }
+        });
+
+        formulario.addEventListener('submit', function (e) {
+            e.preventDefault();
+            botonEnviar.style.display = 'none';
+            mensajeExito.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
